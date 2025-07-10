@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduVision AI - Giải Bài Tập Bằng Hình Ảnh</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <script src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js'></script>
+  <script src="https://download.agora.io/sdk/release/AgoraRTC_N.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+  <!-- header và light dark mode -->
+  <header>
+    <nav>
+      <div class="navbar">
+        <div class="logo"><a href="#">EduVision AI</a></div>
+
+        <div class="appearance">
+          <div class="light-dark">
+            <i class="btn fas fa-moon" id="themeToggle"></i>
+          </div>
+          <div class="color-icon">
+            <div class="icons">
+              <i class="fas fa-palette"></i>
+              <i class="fas fa-sort-down arrow"></i>
+            </div>
+            <div class="color-box">
+              <h3>Color Switcher</h3>
+              <div class="color-switchers">
+                <button class="btn blue active" data-theme="blue" title="Blue Theme"></button>
+                <button class="btn orange" data-theme="orange" title="Orange Theme"></button>
+                <button class="btn purple" data-theme="purple" title="Purple Theme"></button>
+                <button class="btn green" data-theme="green" title="Green Theme"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- giới thiệu nhóm -->
+  <section class="dev">
+    <div class="container">
+      <div class="dev-content">
+        <div class="dev-text">
+          <h1>Empowering Education through AI</h1>
+          <a href="#" class="primary-button">Introduce</a>
+        </div>
+        <div class="dev-images">
+          <img src="" alt="">
+        </div>
+ 
+      </div>
+    </div>
+  </section>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1>Giải bài toán với <span class="highlight">công nghệ AI </span></h1>
+        <p>Tải lên các bài toán của bạn, nhận ngay giải pháp từng bước và học với gia sư AI tiên tiến của chúng tôi, người hiểu rõ phong cách học tập của bạn.</p>
+        <div class="hero-buttons">
+          <a href="#Idk" class="btn-primary">Bắt đầu ngay</a>
+          <a href="#demo" class="btn-secondary">Xem Demo</a>
+        </div>
+        <div class="hero-loops">
+
+          <div class="loop-item">
+            <span class="loop-number">98%</span>
+            <span class="loop-label">Chính Xác</span>
+          </div>
+          <div class="loop-item">
+            <span class="loop-number">24/7</span>
+            <span class="loop-label">AI hỗ trợ</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="math-animation">
+          <div class="floating-equation">x² + 5x = 14</div>
+          <div class="floating-equation">∫ x² dx</div>
+          <div class="floating-equation">sin(θ) = 0.5</div>
+          <div class="floating-equation">√(a² + b²)</div>
+          <div style="text-align: center; color: white;">
+            <div style="font-size: 3rem; margin-bottom: 20px;">🤖</div>
+            <h3>AI Math Tutor</h3>
+            <p>Powered by Advanced Machine Learning</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header scroll-animate">
+        <h2>Tại sao nên chọn EduVision AI?</h2>
+        <p>Trải nghiệm tương lai của việc học toán với công nghệ AI tiên tiến của chúng tôi</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card scroll-animate">
+          <div class="feature-icon">📷</div>
+          <h3>Nhận dạng hình ảnh</h3>
+          <p>Chỉ cần chụp ảnh bài toán của bạn và công nghệ OCR tiên tiến của chúng tôi sẽ nhận dạng và xử lý ngay lập tức.</p>
+        </div>
+        <div class="feature-card scroll-animate">
+          <div class="feature-icon">🧠</div>
+          <h3>Giải pháp hỗ trợ AI</h3>
+          <p>Nhận các giải pháp chi tiết từng bước được hỗ trợ bởi trí tuệ nhân tạo hiện đại
+có thể hiểu các khái niệm toán học.</p>
+        </div>
+        <div class="feature-card scroll-animate">
+          <div class="feature-icon">💬</div>
+          <h3>Học tập tương tác</h3>
+          <p>Đặt câu hỏi tiếp theo và nhận được lời giải thích được cá nhân hóa để hiểu sâu hơn về
+các khái niệm toán học.</p>
+        </div>
+        <div class="feature-card scroll-animate">
+          <div class="feature-icon">📊</div>
+          <h3>Theo dõi tiến trình</h3>
+          <p>Theo dõi hành trình học tập của bạn với các phân tích chi tiết và hiểu biết sâu sắc về điểm mạnh toán học của bạn và các lĩnh vực cần cải thiện.</p>
+        </div>
+        <div class="feature-card scroll-animate">
+          <div class="feature-icon">⚡</div>
+          <h3>Kết quả tức thì</h3>
+          <p>Nhận giải pháp trong vài giây, không phải vài phút. AI được tối ưu hóa của chúng tôi xử lý các vấn đề nhanh hơn bất kỳ con người nào.</p>
+        </div>
+        <div class="feature-card scroll-animate">
+          <div class="feature-icon">🎯</div>
+          <h3>Nhiều chủ đề</h3>
+          <p>Từ số học cơ bản đến phép tính nâng cao, AI của chúng tôi bao gồm tất cả các chủ đề toán học và mức độ khó.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-header scroll-animate">
+        <h2>Cách thức hoạt động</h2>
+        <p>Bắt đầu chỉ với ba bước đơn giản</p>
+      </div>
+      <div class="steps-container">
+        <div class="step-card scroll-animate">
+          <div class="step-number">1</div>
+          <h3>Tải lên vấn đề của bạn</h3>
+          <p>Chụp ảnh hoặc nhập bài toán của bạn trực tiếp vào nền tảng của chúng tôi. Hệ thống của chúng tôi chấp nhận các bài toán viết tay
+hoặc in.</p>
+        </div>
+        <div class="step-card scroll-animate">
+          <div class="step-number">2</div>
+          <h3>Phân tích AI</h3>
+          <p>AI tiên tiến của chúng tôi phân tích vấn đề của bạn, xác định các khái niệm toán học liên quan và
+xác định phương pháp giải pháp tốt nhất.</p>
+        </div>
+        <div class="step-card scroll-animate">
+          <div class="step-number">3</div>
+          <h3>Nhận giải pháp</h3>
+          <p>Nhận các giải pháp từng bước chi tiết với các giải thích, phương pháp thay thế và mẹo cho
+các vấn đề tương tự.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo Section -->
+  <section class="demo" id="demo">
+    <div class="container">
+      <div class="demo-container">
+        <div class="demo-content scroll-animate">
+          <h2>Xem cách giải của AI</h2>
+          <p>Xem cách AI của chúng tôi giải quyết các bài toán phức tạp với các giải thích chi tiết giúp bạn
+hiểu từng bước.</p>
+          <a href="#chatbot" class="btn-primary">Hãy tự mình thử nhé</a>
+        </div>
+        <div class="demo-visual scroll-animate">
+          <div class="demo-problem">
+            <strong>Problem:</strong> Solve for x: 2x² - 8x + 6 = 0
+          </div>
+          <div class="demo-solution">
+            <strong>AI Solution:</strong><br>
+            Step 1: Factor out 2: 2(x² - 4x + 3) = 0<br>
+            Step 2: Divide by 2: x² - 4x + 3 = 0<br>
+            Step 3: Factor: (x - 1)(x - 3) = 0<br>
+            Step 4: Solve: x = 1 or x = 3<br>
+            <br>
+            <strong>Answer:</strong> x = 1, x = 3
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+
+
+ 
+  <!-- giới thiệu web -->
+  <main class="main-content">
+    <!-- nút liên kết vào mục chọn ảnh  -->
+    <section id="Idk">
+      <h3>Dùng thử ngay</h3>
+      <p>Chọn ảnh bài tập Toán để xem AI giải như thế nào:</p>
+      <input type="file" id="inputImage" accept="image/*" />
+      <button id="solveBtn">Xem Lời Giải Bài Toán (từ ảnh)</button>
+      <div id="solution"></div>
+    </section>
+
+    <!-- chatbox ai -->
+    <section id="chatbot">
+      <h3>Trò chuyện với AI Gia Sư</h3>
+      <div id="chatBox">
+        <div class="text-gray-600">AI: Chào bạn! Gửi đề bài hoặc hỏi bất kỳ điều gì bạn chưa hiểu nhé.</div>
+      </div>
+      <div class="chat-input-container">
+        <input type="text" id="chatInput" placeholder="Nhập câu hỏi..." />
+        <button id="sendBtn">
+          <ion-icon name="send-outline"></ion-icon>
+        </button>
+      </div>
+    </section>
+
+    <!-- lịch sử tìm kiếm -->
+    <div class="main-layout">
+      <div class="content-area">
+        <div class="tabs">
+          <button class="tab-button active" data-tab="historyTab">Lịch Sử Học Tập</button>
+          <button class="tab-button" data-tab="statsTab">Thống Kê Chi Tiết</button>
+          <button class="tab-button" data-tab="liveClassTab">Lớp Học Trực Tuyến</button>
+        </div>
+        <div id="historyTab" class="tab-content">
+
+          <!-- chi tiet lich su -->
+          <div class="history-header">
+            <h2>📚 Lịch Sử Học Tập</h2>
+            <button onclick="clearHistory()" class="action-btn">🗑️ Xóa Tất Cả</button>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-number" id="totalProblems">0</div>
+              <div class="stat-label">Bài Đã Giải</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number" id="todayProblems">0</div>
+              <div class="stat-label">Hôm Nay</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number" id="weekProblems">0</div>
+              <div class="stat-label">Tuần Này</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number" id="favoriteType">-</div>
+              <div class="stat-label">Dạng Yêu Thích</div>
+            </div>
+          </div>
+
+          <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Tìm kiếm bài tập...">
+            <button onclick="searchHistory()">🔍</button>
+          </div>
+
+          <div class="filter-controls">
+            <button class="filter-btn active" data-filter="all">Tất Cả</button>
+            <button class="filter-btn" data-filter="equation">Phương Trình</button>
+            <button class="filter-btn" data-filter="geometry">Hình Học</button>
+            <button class="filter-btn" data-filter="calculus">Giải Tích</button>
+            <button class="filter-btn" data-filter="trigonometry">Lượng Giác</button>
+            <button class="filter-btn" data-filter="algebra">Đại Số</button>
+          </div>
+
+          <div id="historyList">
+            <div class="loading">
+              <div class="spinner"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="statsTab" class="tab-content hidden">
+          <h2>📊 Thống Kê Chi Tiết</h2>
+          <div id="detailedStats">
+          </div>
+        </div>
+
+        <div id="liveClassTab" class="tab-content hidden">
+          <h2>🧑‍🏫 Lớp Học Trực Tuyến</h2>
+
+          <div class="google-meet-section">
+            <h3 class="google-meet-title">Tham gia lớp học</h3>
+            <p class="google-meet-description">Nếu lớp học sử dụng Google Meet, hãy nhấp vào nút dưới đây:</p>
+            <button id="join-google-meet-btn" class="google-meet-button">
+              <ion-icon name="videocam-outline"></ion-icon>
+              Tham gia lớp học
+            </button>
+          </div>
+          <div id="classroom-section" class="classroom-section hidden">
+            <h3 id="current-classroom-id"></h3>
+            <button id="leave-btn">Rời lớp học</button>
+
+            <div class="video-conference">
+              <div id="local-video" class="video-player">Video của bạn</div>
+              <div id="remote-video-1" class="video-player"></div>
+              <div id="remote-video-2" class="video-player"></div>
+              <div id="remote-video-3" class="video-player"></div>
+            </div>
+
+            <div class="classroom-tools">
+              <div class="classroom-chat">
+                <h3>Chat Lớp Học</h3>
+                <div id="classroom-chat-messages" class="chat-box"></div>
+                <div class="chat-input-area">
+                  <input type="text" id="classroom-chat-input" placeholder="Gửi tin nhắn trong lớp..." />
+                  <button id="send-classroom-chat-btn">Gửi</button>
+                </div>
+              </div>
+
+              <div class="classroom-whiteboard">
+                <h3>Bảng Trắng Chia Sẻ</h3>
+                <canvas id="whiteboard-canvas"></canvas>
+                <button id="clear-whiteboard-btn">Xóa Bảng</button>
+              </div>
+
+              <div class="classroom-ai-analysis">
+                <h3>AI Phân Tích Văn Bản</h3>
+                <textarea id="ai-text-input" placeholder="Nhập văn bản để AI phân tích..."></textarea>
+                <button id="analyze-text-btn">Phân tích</button>
+                <div id="ai-output"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- nhấp vào hiển thị chi tiết bài tập -->
+    <div id="problemModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Chi Tiết Bài Tập</h3>
+          <button class="close-btn" onclick="closeModal('problemModal')">&times;</button>
+        </div>
+        <div id="modalContent">
+        </div>
+      </div>
+    </div>
+
+     <!-- Pricing -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="section-header scroll-animate">
+        <h2>Choose Your Plan</h2>
+        <p>Bắt đầu miễn phí và nâng cấp khi bạn phát triển</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="pricing-card scroll-animate">
+          <h3>Free</h3>
+          <div class="pricing-price">0 vnđ</div>
+          <div class="pricing-period">Mỗi Tháng</div>
+          <ul class="pricing-features">
+            <li>20 lần giải mỗi ngày</li>
+            <li>giải bài theo cách đơn giản</li>
+            <li>Nhận dạng hình ảnh</li>
+            <li>Hỗ trợ cộng đồng </li>
+          </ul>
+          <a href="#get-started" class="cta-button">Get Started</a>
+        </div>
+        <div class="pricing-card featured scroll-animate">
+          <h3>Pro</h3>
+          <div class="pricing-price">150.000 vnđ</div>
+          <div class="pricing-period">Mỗi Tháng</div>
+          <ul class="pricing-features">
+            <li>Không giới hạn số lần giải </li>
+            <li>Giải thích chi tiết</li>
+            <li>Hỗ trợ ưu tiên</li>
+            <li>Theo dõi tiến độ</li>
+            <li>Chủ đề nâng cao</li>
+            <li>Không quảng cáo</li>
+          </ul>
+          <a href="#get-started" class="cta-button">Start Pro Trial</a>
+        </div>
+        <div class="pricing-card scroll-animate">
+          <h3>Premium</h3>
+          <div class="pricing-price">550.000 vnđ</div>
+          <div class="pricing-period">Mỗi Tháng</div>
+          <ul class="pricing-features">
+            <li>Mọi thứ ở bản Pro</li>
+            <li>Buổi học kèm riêng 1-1</li>
+            <li>Kế hoạch học tập tùy chỉnh</li>
+            <li>Bài tập thi thử</li>
+            <li>Truy cập API</li>
+            <li>Giải pháp chuyên sâu</li>
+          </ul>
+          <a href="#get-started" class="cta-button">Go Premium</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+    <footer class="footer" id="contact">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>EduVision AI</h3>
+            <p>Cách mạng hóa giáo dục toán học bằng trí tuệ nhân tạo. Làm cho các khái niệm toán học phức tạp
+có thể tiếp cận được với mọi người, mọi nơi.</p>
+            <div class="social-links">
+              <a href="#">📘</a>
+              <a href="#">🐦</a>
+              <a href="#">📷</a>
+              <a href="#">💼</a>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h3>Product</h3>
+            <ul class="footer-links">
+              <li><a href="#features">tính năng</a></li>
+              <li><a href="#pricing">Nâng cấp</a></li>
+              <li><a href="#demo">Demo</a></li>
+              <li><a href="#">API</a></li>
+              <li><a href="#">Mobile App</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>Support</h3>
+            <ul class="footer-links">
+              <li><a href="#">Trung tâm chăm sóc</a></li>
+              <li><a href="#">Tài liệu</a></li>
+              <li><a href="#">Cộng đồng </a></li>
+              <li><a href="#">Liên hệ với chúng tôi </a></li>
+              <li><a href="#">loopus</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>Company</h3>
+            <ul class="footer-links">
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Press</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 EduVision AI. All rights reserved. Made with ❤️ for students worldwide.</p>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+
+  </script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
